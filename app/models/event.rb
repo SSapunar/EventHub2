@@ -10,7 +10,7 @@ class Event < ApplicationRecord
 
   enum :status, { draft: 0, published: 1, finished: 2 }
 
-  validate :date_cannot_be_in_the_past, on: :create
+  validate :date_cannot_be_in_the_past, on: :create, unless: :finished?
 
   private
 

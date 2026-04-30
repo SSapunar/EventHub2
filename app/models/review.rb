@@ -7,7 +7,7 @@ class Review < ApplicationRecord
   validates :comment, length: { maximum: 500 }
   validates :user_id, uniqueness: { scope: :event_id }
 
-  validate :event_must_be_finished, on: :create
+  validate :event_must_be_finished, on: :create, unless: -> { event&.finished? }
 
   private
 

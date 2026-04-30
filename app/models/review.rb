@@ -4,12 +4,10 @@ class Review < ApplicationRecord
 
   validates :rating, presence: true,
                      numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
-
   validates :comment, length: { maximum: 500 }
-
   validates :user_id, uniqueness: { scope: :event_id }
 
-  validate :event_must_be_finished
+  validate :event_must_be_finished, on: :create
 
   private
 

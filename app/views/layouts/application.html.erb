@@ -42,8 +42,14 @@
       </div>
     </nav>
 
+  <% if current_page?(root_path) %>
+    <main>
+      <%= yield %>
+    </main>
+  <% else %>
     <main class="container my-4">
       <%= yield %>
     </main>
+  <% end %>
   </body>
 </html>
